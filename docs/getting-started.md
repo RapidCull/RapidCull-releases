@@ -8,13 +8,13 @@ This guide walks you through installing RapidCull, creating your first project, 
 
 ### Windows
 
-1. Download the latest `.exe` installer from the [Releases](../../releases) page
+1. Download the latest `.exe` installer from the [Releases](../../../releases) page
 2. Run the installer and follow the on-screen prompts
 3. Launch RapidCull from the Start Menu or desktop shortcut
 
 ### macOS
 
-1. Download the latest `.dmg` file from the [Releases](../../releases) page
+1. Download the latest `.dmg` file from the [Releases](../../../releases) page
 2. Open the `.dmg` and drag RapidCull to your Applications folder
 3. Launch RapidCull from Applications
 
@@ -71,17 +71,20 @@ RapidCull will copy all supported images from the source to a new project folder
 Once your project opens, you'll see the main workspace:
 
 ### Top Bar
+
 - **Project name** displayed at the top
 - **Keyboard shortcuts help** — press `?` or click the help icon to see all shortcuts
 - **Export button** — export your labeled images when you're done
 
 ### Filter Bar
+
 - **Filter buttons**: All | Picks | Candidates | Rejects | Unlabeled
 - Each button shows a **live count** of images in that category
 - Use keyboard shortcuts `1` through `5` to switch filters quickly
 - **Burst threshold** selector for adjusting burst detection sensitivity
 
 ### Grid View
+
 - **Thumbnail grid** showing all images matching your current filter
 - Each thumbnail shows a **label indicator** (green dot for Pick, yellow for Candidate, red for Reject)
 - Images in bursts show a **burst badge** with the group count
@@ -122,6 +125,7 @@ See the [Burst Comparison guide](burst-comparison.md) for a full explanation.
 ### Step 4: Review Candidates
 
 Switch to the **Candidates** filter (press `3`) and make final decisions:
+
 - Promote the best candidates to Picks (`P`)
 - Demote the rest to Rejects (`X`)
 

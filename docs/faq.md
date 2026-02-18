@@ -18,7 +18,7 @@ No. RapidCull is fully local-first. All data is stored on your machine. No cloud
 
 ### Is RapidCull free?
 
-RapidCull is currently in beta and free to use. Check the [Releases](../../releases) page for the latest version. See the [License Agreement](../LICENSE.md) for full terms.
+RapidCull is currently in beta and free to use. Check the [Releases](../../../releases) page for the latest version. See the [License Agreement](../LICENSE.md) for full terms.
 
 ---
 
@@ -57,12 +57,12 @@ Yes. When you create a project, RapidCull recursively scans the entire directory
 
 ### What do the labels mean?
 
-| Label | Purpose |
-|-------|---------|
-| **Pick** | Your best frames — the ones you'll edit and deliver |
-| **Candidate** | Potential keepers — worth a second look |
-| **Reject** | Frames to discard |
-| **Unlabeled** | Not yet reviewed |
+| Label         | Purpose                                             |
+| ------------- | --------------------------------------------------- |
+| **Pick**      | Your best frames — the ones you'll edit and deliver |
+| **Candidate** | Potential keepers — worth a second look             |
+| **Reject**    | Frames to discard                                   |
+| **Unlabeled** | Not yet reviewed                                    |
 
 ### Are labels saved automatically?
 
@@ -111,10 +111,10 @@ An XMP sidecar is a small XML file that sits alongside your image file and conta
 ### How do labels map to Lightroom?
 
 | RapidCull Label | Lightroom Color | Lightroom Stars |
-|-----------------|----------------|-----------------|
-| Pick | Green | 5 stars |
-| Candidate | Yellow | 3 stars |
-| Reject | Red | 1 star |
+| --------------- | --------------- | --------------- |
+| Pick            | Green           | 5 stars         |
+| Candidate       | Yellow          | 3 stars         |
+| Reject          | Red             | 1 star          |
 
 ### Can I export to Lightroom directly?
 
@@ -155,6 +155,7 @@ When you first open a project, RapidCull needs to generate thumbnails for all yo
 ### The grid feels slow with a very large project. What can I do?
 
 RapidCull should handle 10,000+ images smoothly. If you're experiencing slowness, try:
+
 - Ensuring your project folder is on an SSD (not a mechanical hard drive)
 - Closing other memory-intensive applications
 - Waiting for initial thumbnail generation to complete
@@ -177,7 +178,8 @@ Some images may have inaccurate or missing capture timestamps in their metadata.
 
 ### How do I report a bug or request a feature?
 
-Please [open an issue](../../issues) on this repository. Include:
+Please [open an issue](../../../issues) on this repository. Include:
+
 - Your operating system and version
 - The version of RapidCull you're using
 - Steps to reproduce the problem
