@@ -37,6 +37,7 @@ These shortcuts work in both the grid view and the viewer.
 | Left Arrow / `J` | Previous image |
 | Right Arrow / `K` | Next image |
 | `Escape` | Close viewer and return to grid |
+| `F` (hold) | Show Focus Assist overlay (release to hide) |
 
 ---
 
@@ -98,6 +99,7 @@ C  Candidate      Tab     Next      K/Right  Next     2  Picks
 X  Reject         S-Tab   Prev      Esc      Close    3  Candidates
 U  Unlabeled      Enter   Open      +/-      Zoom     4  Rejects
                                     0        Fit      5  Unlabeled
+                                    F(hold)  Focus Assist
 
 BURST COMPARISON                    ZOOM
 B       Enter burst mode            +/=      Zoom in

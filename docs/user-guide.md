@@ -12,6 +12,7 @@ This guide covers the core interface and workflow of RapidCull in detail: the gr
 - [Filtering](#filtering)
 - [Burst Detection](#burst-detection)
 - [Project Management](#project-management)
+- [Settings](#settings)
 - [Notifications](#notifications)
 
 ---
@@ -139,6 +140,20 @@ When zoomed in, the cursor changes to a grab icon. Click and drag to pan around 
 
 The viewer preloads the next and previous images in the background so that navigation feels instant. You won't notice any loading delay when moving through a sequence.
 
+### Focus Assist
+
+Focus Assist is a sharpness overlay you can invoke at any time in the viewer. Hold `F` (default, rebindable in Settings) to display it. Release the key to hide it.
+
+While active, the overlay divides the image into a grid of regions. Low-sharpness areas are darkened, making soft focus immediately visible. A score badge in the corner shows an overall sharpness score from 0 to 100:
+
+| Score range | Color | Meaning |
+|-------------|-------|---------|
+| 65–100 | Green | Sharp |
+| 40–64 | Yellow | Moderate sharpness |
+| 0–39 | Red | Soft or out of focus |
+
+The grid detail level (coarse to fine) is adjustable in **Settings → Focus Assist**. Higher detail reveals smaller focus regions, useful for comparing fine differences between burst frames. Results are cached per image so re-invoking is instant.
+
 ### Missing Files
 
 If an image file has been moved or deleted since the project was created, the viewer shows a folder icon with a "File not found" message. You can still navigate past missing files — the viewer won't crash.
@@ -226,6 +241,45 @@ From the home screen, click the delete button next to a project to remove it fro
 ### Project Data Storage
 
 Each project stores its data in a `.rapidcull` folder inside the project directory. This folder contains your labels, cached thumbnails, and project settings. It is self-contained — you can safely move your project folder to a different location, just re-create the project in RapidCull pointing to the new path.
+
+---
+
+## Settings
+
+The Settings dialog is accessible from the gear icon in the toolbar, available on both the Home screen and inside any open project. Settings are persisted across sessions.
+
+### Appearance
+
+Choose the application theme:
+
+| Option | Behavior |
+|--------|----------|
+| **System** | Follows your operating system's dark/light preference (default) |
+| **Dark** | Forces dark mode regardless of OS setting |
+| **Light** | Forces light mode regardless of OS setting |
+
+### Burst Comparison
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| **Auto-apply winner label** | Off | When on, labels are applied immediately after each pick without a confirmation step |
+| **Override existing labels on losers** | On | When off, already-labeled images keep their label; only unlabeled images receive the loser label |
+| **Label losers as** | Reject | Choose whether losing images are labeled as Reject or left Unlabeled |
+
+### Focus Assist
+
+The **Analysis detail** slider controls the grid resolution used by Focus Assist (1 = Low, 5 = High). Higher detail divides the image into more regions, making it easier to pinpoint small areas of soft focus. The grid is orientation-aware — portrait images get taller grids.
+
+### Keyboard Shortcuts
+
+Click any key badge to rebind that action. Press the desired key when prompted, or press `Escape` to cancel. Custom bindings are shown with a distinct style, with a **Reset** button to restore the default.
+
+Rebindable actions:
+- **Labeling** — Pick, Candidate, Reject, Remove label
+- **Viewer** — Next image, Previous image, Focus Assist overlay
+- **Burst Comparison** — Pick left, Pick right, Undo pick
+
+Arrow keys always navigate in the viewer and burst comparison regardless of shortcut settings.
 
 ---
 

@@ -43,6 +43,14 @@ Save decisions as standard sidecar metadata so your ratings transfer cleanly int
 
 Projects stay on your machine. No cloud services, accounts, or uploads.
 
+### Focus Assist
+
+Hold `F` in the viewer to overlay a sharpness map on the current image. Low-sharpness regions are darkened and an overall score (0–100) is displayed, making it easy to spot focus differences between similar frames.
+
+### Settings
+
+Customizable theme (dark, light, or system), burst comparison behavior, Focus Assist detail level, and rebindable keyboard shortcuts — all persisted across sessions.
+
 ### RAW + standard formats
 
 Supports common RAW formats alongside JPEG, PNG, TIFF, BMP, and others.

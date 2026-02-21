@@ -176,6 +176,18 @@ The original image file has been moved or deleted since the project was created.
 
 Some images may have inaccurate or missing capture timestamps in their metadata. Images without valid timestamps cannot be grouped into bursts. Ensure your camera's date/time is set correctly.
 
+### Does RapidCull support dark mode?
+
+Yes. Open Settings (gear icon in the toolbar) and choose **Dark**, **Light**, or **System** (follows your OS preference) under Appearance. The default is Dark.
+
+### Can I customize keyboard shortcuts?
+
+Yes. Open Settings and scroll to **Keyboard Shortcuts**. Click any key badge to rebind it, then press the desired key. Arrow keys always navigate in the viewer and burst comparison regardless of custom bindings.
+
+### What does the Focus Assist score mean?
+
+The score (0–100) represents the relative sharpness of the image. 65 or above (green) indicates a sharp image. 40–64 (yellow) is moderate. Below 40 (red) suggests soft or out-of-focus. Use it as a guide alongside your own visual judgment — the score is based on the embedded preview, not a full RAW decode.
+
 ### How do I report a bug or request a feature?
 
 Please [open an issue](../../../issues) on this repository. Include:
