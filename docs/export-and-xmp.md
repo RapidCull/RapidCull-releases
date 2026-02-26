@@ -11,6 +11,8 @@ RapidCull's export system copies your selected images to a destination folder an
 - [The Export Process](#the-export-process)
 - [XMP Sidecar Files](#xmp-sidecar-files)
 - [Lightroom Classic Integration](#lightroom-classic-integration)
+  - [Auto-launch After Export](#auto-launch-after-export)
+  - [Importing into Lightroom](#importing-into-lightroom)
 - [Cancellation and Safety](#cancellation-and-safety)
 
 ---
@@ -86,6 +88,18 @@ IMG_0042.xmp
 ## Lightroom Classic Integration
 
 RapidCull's XMP output is designed to integrate seamlessly with Adobe Lightroom Classic.
+
+### Auto-launch After Export
+
+RapidCull can open Lightroom Classic automatically once an export completes.
+
+To configure this, open **Settings → Integrations** and:
+
+1. Set the **Lightroom Classic executable path** to the full path of your Lightroom installation
+2. Enable **Launch Lightroom Classic after export**
+3. Optionally enable **Show launch option in export dialog** — this adds a checkbox in the export dialog so you can decide per-export whether to launch Lightroom
+
+When the option is hidden from the export dialog, the setting acts as a global toggle.
 
 ### Importing into Lightroom
 

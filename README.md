@@ -47,9 +47,17 @@ Projects stay on your machine. No cloud services, accounts, or uploads.
 
 Hold `F` in the viewer to overlay a sharpness map on the current image. Low-sharpness regions are darkened and an overall score (0–100) is displayed, making it easy to spot focus differences between similar frames.
 
+### Photo Info Panel
+
+Press `I` in the viewer to open a sidebar showing full EXIF metadata for the current image — camera, lens, shutter speed, aperture, ISO, focal length, capture time, and file details.
+
+### Lightroom Classic Integration
+
+Optionally configure RapidCull to launch Lightroom Classic automatically after an export. Set the executable path once in **Settings → Integrations** and enable the toggle.
+
 ### Settings
 
-Customizable theme (dark, light, or system), burst comparison behavior, Focus Assist detail level, and rebindable keyboard shortcuts — all persisted across sessions.
+Customizable theme (dark, light, or system), burst comparison behavior, Focus Assist detail level, rebindable keyboard shortcuts, and third-party integrations — all persisted across sessions.
 
 ### RAW + standard formats
 

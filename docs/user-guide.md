@@ -13,6 +13,7 @@ This guide covers the core interface and workflow of RapidCull in detail: the gr
 - [Burst Detection](#burst-detection)
 - [Project Management](#project-management)
 - [Settings](#settings)
+  - [Integrations](#integrations)
 - [Notifications](#notifications)
 
 ---
@@ -154,6 +155,25 @@ While active, the overlay divides the image into a grid of regions. Low-sharpnes
 
 The grid detail level (coarse to fine) is adjustable in **Settings → Focus Assist**. Higher detail reveals smaller focus regions, useful for comparing fine differences between burst frames. Results are cached per image so re-invoking is instant.
 
+### Photo Info Panel
+
+Press `I` in the viewer to toggle the Photo Info panel — a sidebar showing the full EXIF metadata for the current image.
+
+The panel displays:
+
+| Field | Description |
+|-------|-------------|
+| **Camera** | Camera make and model |
+| **Lens** | Lens name as recorded by the camera |
+| **Shutter speed** | Exposure time (e.g., 1/500 s) |
+| **Aperture** | f-number (e.g., f/2.8) |
+| **ISO** | Sensor sensitivity |
+| **Focal length** | As recorded in EXIF (not equivalent) |
+| **Capture time** | Date and time the photo was taken |
+| **File details** | Filename, format, and file size |
+
+The panel sits alongside the image — the viewer canvas resizes to accommodate it so nothing is obscured. Press `I` again to close it.
+
 ### Missing Files
 
 If an image file has been moved or deleted since the project was created, the viewer shows a folder icon with a "File not found" message. You can still navigate past missing files — the viewer won't crash.
@@ -269,6 +289,16 @@ Choose the application theme:
 ### Focus Assist
 
 The **Analysis detail** slider controls the grid resolution used by Focus Assist (1 = Low, 5 = High). Higher detail divides the image into more regions, making it easier to pinpoint small areas of soft focus. The grid is orientation-aware — portrait images get taller grids.
+
+### Integrations
+
+Configure third-party application launch behavior.
+
+| Setting | Description |
+|---------|-------------|
+| **Launch Lightroom Classic after export** | When enabled, RapidCull automatically opens Lightroom Classic once an export completes |
+| **Lightroom Classic executable path** | Full path to the `Lightroom.exe` (Windows) or `Adobe Lightroom Classic.app` (macOS) executable |
+| **Show launch option in export dialog** | When enabled, the export dialog shows a checkbox to trigger the launch; when disabled, the setting is hidden from the export dialog |
 
 ### Keyboard Shortcuts
 

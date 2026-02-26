@@ -38,6 +38,7 @@ These shortcuts work in both the grid view and the viewer.
 | Right Arrow / `K` | Next image |
 | `Escape` | Close viewer and return to grid |
 | `F` (hold) | Show Focus Assist overlay (release to hide) |
+| `I` | Toggle Photo Info panel |
 
 ---
 
@@ -100,6 +101,7 @@ X  Reject         S-Tab   Prev      Esc      Close    3  Candidates
 U  Unlabeled      Enter   Open      +/-      Zoom     4  Rejects
                                     0        Fit      5  Unlabeled
                                     F(hold)  Focus Assist
+                                    I        Photo Info
 
 BURST COMPARISON                    ZOOM
 B       Enter burst mode            +/=      Zoom in
