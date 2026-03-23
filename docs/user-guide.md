@@ -9,6 +9,7 @@ This guide covers the core interface and workflow of RapidCull in detail: the gr
 - [The Labeling System](#the-labeling-system)
 - [Grid View](#grid-view)
 - [Viewer Mode](#viewer-mode)
+- [AI Analysis](#ai-analysis)
 - [Filtering](#filtering)
 - [Burst Detection](#burst-detection)
 - [Project Management](#project-management)
@@ -55,6 +56,7 @@ Each thumbnail can display:
 
 - **Label dot** — A small colored dot indicating the image's current label (green, yellow, or red). Unlabeled images show no dot.
 - **Burst badge** — A numbered badge (e.g., "3") appearing on images that are part of a burst group. The number indicates how many images are in that burst.
+- **AI Score badge** — A small color-coded number (0–100) in the top-right corner showing the composite quality score. Green (70–100) = high quality, yellow (40–69) = moderate, red (0–39) = low. The badge only appears after AI analysis has been run on that image.
 
 ### Navigation
 
@@ -109,6 +111,7 @@ The top of the viewer shows:
 The bottom of the viewer shows:
 - **Label buttons** — `P`, `C`, `X`, `U` buttons showing the current label state
 - **Current label badge** — displays "Pick", "Candidate", "Reject", or "Unlabeled"
+- **AI Score badge** — when AI analysis has been run, a color-coded badge shows the composite quality score (0–100). Green (70–100), yellow (40–69), red (0–39). Hidden if the image has not been analyzed.
 - **Zoom level** — shows "Fit" or the current zoom percentage (e.g., "142%")
 - **Auto-Advance toggle** — checkbox to enable automatic advancement after labeling
 
@@ -155,11 +158,23 @@ While active, the overlay divides the image into a grid of regions. Low-sharpnes
 
 The grid detail level (coarse to fine) is adjustable in **Settings → Focus Assist**. Higher detail reveals smaller focus regions, useful for comparing fine differences between burst frames. Results are cached per image so re-invoking is instant.
 
+### Subject Bounding Box
+
+When an image has been analyzed by AI and a subject was detected, you can display a bounding box overlay showing exactly where the subject was found in the frame.
+
+- Press `B` (default, rebindable) to toggle the overlay on and off.
+- A button also appears in the viewer bottom bar when detection data exists — click it to toggle.
+- If the current image has no detection data (not analyzed, or no relevant subject found), pressing `B` has no effect and the button is not shown.
+
+The overlay is a colored rectangle drawn over the detected subject region. It repositions correctly when you zoom or pan the image.
+
 ### Photo Info Panel
 
-Press `I` in the viewer to toggle the Photo Info panel — a sidebar showing the full EXIF metadata for the current image.
+Press `I` in the viewer to toggle the Photo Info panel — a sidebar showing the full EXIF metadata for the current image and AI analysis results.
 
 The panel displays:
+
+**Camera & exposure**
 
 | Field | Description |
 |-------|-------------|
@@ -172,11 +187,73 @@ The panel displays:
 | **Capture time** | Date and time the photo was taken |
 | **File details** | Filename, format, and file size |
 
+**AI Analysis**
+
+The panel also includes an AI Analysis section (only meaningful after running analysis):
+
+| Field | Description |
+|-------|-------------|
+| **AI Score** | Composite quality score 0–100. Shown as High (green, ≥70), Mid (yellow, 40–69), or Low (red, <40). "Not analyzed" if the image hasn't been scored. |
+| **Subject** | Detected subject class (e.g., "person", "dog"). "None detected" if no relevant subject was found. |
+| **Confidence** | Subject detection confidence as a percentage (e.g., "87%"). Hidden when no subject was detected. |
+| **Sharpness** | Sharpness of the subject region (or full image if no subject detected), displayed as Low (<100), Med (100–499), or High (≥500). Labeled "Subject sharpness" when a subject bbox is present, "Image sharpness" otherwise. |
+
 The panel sits alongside the image — the viewer canvas resizes to accommodate it so nothing is obscured. Press `I` again to close it.
 
 ### Missing Files
 
 If an image file has been moved or deleted since the project was created, the viewer shows a folder icon with a "File not found" message. You can still navigate past missing files — the viewer won't crash.
+
+---
+
+## AI Analysis
+
+RapidCull can score images automatically using a multi-phase AI pipeline that measures sharpness, perceptual quality, and subject detection. Analysis is entirely optional and runs in the background without blocking your workflow.
+
+### Starting Analysis
+
+When the AI model is available, an **Analyze** button appears in the project header toolbar. Click it to begin. Analysis runs in three phases:
+
+1. **BRISQUE quality scoring** — a no-reference perceptual quality measure is computed for every image.
+2. **Subject detection** — a YOLO model scans each image for recognized subjects (people, birds, cats, dogs, horses, elephants, bears, zebras, giraffes). When a subject is found, its bounding box and confidence are recorded, and sharpness is measured specifically on that region.
+3. **Composite score calculation** — a final 0–100 integer score is calculated for each image.
+
+A green progress bar appears below the toolbar showing "Analyzing images (done/total)" while analysis is running. When it finishes, the grid refreshes and AI Score badges become visible on analyzed images.
+
+### The Composite Score
+
+The composite AI Score combines three signals:
+
+| Signal | Weight (with subject) | Weight (no subject detected) |
+|--------|----------------------|------------------------------|
+| Subject-region sharpness | 55% | 65% |
+| BRISQUE perceptual quality | 35% | 35% |
+| Subject detection confidence | 10% | 0% |
+
+The score ranges from 0 to 100 (higher is better). Color coding:
+
+| Range | Color | Label |
+|-------|-------|-------|
+| 70–100 | Green | High |
+| 40–69 | Yellow | Mid |
+| 0–39 | Red | Low |
+
+### Score Badges
+
+After analysis, badges appear in two places:
+
+- **Grid view** — a small color-coded number in the top-right corner of each thumbnail.
+- **Viewer bottom bar** — a High / Mid / Low badge shown alongside the label buttons.
+
+Images that have not been analyzed show no badge in either location.
+
+### When the Analyze Button Is Not Shown
+
+The Analyze button is only visible when the ONNX Runtime and the bundled `yolo11n.onnx` model are both available. If the button is absent, the AI model is not loaded — see [the FAQ](../faq.md#what-if-the-analyze-button-doesnt-appear) for details. All other RapidCull features work normally without it.
+
+### Does Analysis Modify My Files?
+
+No. All scores and detection results are stored in the project database only. Your original image files are never touched.
 
 ---
 
@@ -193,6 +270,17 @@ The filter bar lets you focus on specific subsets of your images.
 | Candidates | `3` | Only images labeled as Candidate |
 | Rejects | `4` | Only images labeled as Reject |
 | Unlabeled | `5` | Only images with no label |
+
+### Sorting
+
+A **Sort** dropdown in the filter bar controls the order images appear in the grid and viewer:
+
+| Option | Order |
+|--------|-------|
+| **Date** (default) | Capture timestamp, falling back to filename |
+| **AI Score** | Highest composite score first; unscored images appear last |
+
+Changing the sort order takes effect immediately without reloading. Sort state is not persisted across sessions.
 
 ### Live Counts
 

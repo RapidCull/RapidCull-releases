@@ -39,6 +39,7 @@ These shortcuts work in both the grid view and the viewer.
 | `Escape` | Close viewer and return to grid |
 | `F` (hold) | Show Focus Assist overlay (release to hide) |
 | `I` | Toggle Photo Info panel |
+| `B` | Toggle subject bounding box overlay (only active when detection data exists) |
 
 ---
 
@@ -69,9 +70,11 @@ These shortcuts work in both the grid view and the viewer.
 
 ## Burst Comparison
 
+`B` in the grid enters burst comparison mode for the selected image. This is a separate context from the viewer `B` shortcut above — both use the same key but in different screens.
+
 | Shortcut | Action |
 |----------|--------|
-| `B` | Enter burst comparison mode (when a burst member is selected) |
+| `B` | Enter burst comparison mode (when a burst member is selected in the grid) |
 | `1` or Left Arrow | Pick the **left** image (champion) |
 | `2` or Right Arrow | Pick the **right** image (challenger) |
 | `Z` | Undo last pick |
@@ -102,8 +105,9 @@ U  Unlabeled      Enter   Open      +/-      Zoom     4  Rejects
                                     0        Fit      5  Unlabeled
                                     F(hold)  Focus Assist
                                     I        Photo Info
+                                    B        Bbox overlay*
 
-BURST COMPARISON                    ZOOM
+BURST COMPARISON (grid)             ZOOM
 B       Enter burst mode            +/=      Zoom in
 1/Left  Pick left (champion)        -/_      Zoom out
 2/Right Pick right (challenger)     0        Reset fit
@@ -111,4 +115,7 @@ Z       Undo                        Dbl-clk  Fit/100%
 V       Toggle layout               Scroll   Zoom to cursor
 L       Linked zoom                 Drag     Pan
 Esc     Exit
+
+* Viewer B: toggle subject bounding box; only active when AI detection data exists.
+  Grid B: enter burst comparison for the selected image. Same key, different context.
 ```

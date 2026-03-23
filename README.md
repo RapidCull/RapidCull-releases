@@ -43,13 +43,21 @@ Save decisions as standard sidecar metadata so your ratings transfer cleanly int
 
 Projects stay on your machine. No cloud services, accounts, or uploads.
 
+### AI Quality Scoring
+
+Click **Analyze** in the project toolbar to run a multi-phase AI analysis pipeline. Each image receives a composite score (0–100) combining subject-region sharpness, BRISQUE perceptual quality, and subject detection confidence. Scores appear as color-coded badges on grid thumbnails and in the viewer.
+
+### Subject Detection and Bounding Box
+
+The analysis pipeline uses a YOLO model to detect subjects (people, animals) in each image. Detected subjects are shown in the Photo Info panel with their class, confidence, and sharpness. Press `B` in the viewer to toggle a bounding box overlay showing exactly where the subject was found.
+
 ### Focus Assist
 
 Hold `F` in the viewer to overlay a sharpness map on the current image. Low-sharpness regions are darkened and an overall score (0–100) is displayed, making it easy to spot focus differences between similar frames.
 
 ### Photo Info Panel
 
-Press `I` in the viewer to open a sidebar showing full EXIF metadata for the current image — camera, lens, shutter speed, aperture, ISO, focal length, capture time, and file details.
+Press `I` in the viewer to open a sidebar showing full EXIF metadata for the current image — camera, lens, shutter speed, aperture, ISO, focal length, capture time, and file details — as well as AI analysis results including the composite score, detected subject, and sharpness rating.
 
 ### Lightroom Classic Integration
 

@@ -162,6 +162,40 @@ RapidCull should handle 10,000+ images smoothly. If you're experiencing slowness
 
 ---
 
+## AI Analysis
+
+### What is the AI Score?
+
+The AI Score is a 0–100 composite quality number assigned to each image during analysis. Higher is better. It combines three signals: subject-region sharpness (55%), BRISQUE perceptual quality (35%), and subject detection confidence (10%, only applied when a subject is found). Color coding: green (≥70 = High), yellow (40–69 = Mid), red (<40 = Low).
+
+### How do I run AI analysis?
+
+Click the **Analyze** button in the project header toolbar. A progress bar appears below the toolbar while analysis runs. The button is only shown when the AI model is available — if you don't see it, see the next question.
+
+### What if the Analyze button doesn't appear?
+
+The Analyze button is hidden when the AI model is not loaded. This happens when the bundled `yolo11n.onnx` model file is missing from the application resources. In a standard RapidCull installation the model is included automatically. If you built the app from source, see the ONNX Runtime model setup section in the developer documentation.
+
+All other features — labeling, burst comparison, export, Focus Assist — work normally without the AI model.
+
+### What is subject detection?
+
+During analysis, a YOLO model scans each image for recognizable subjects: people, birds, cats, dogs, horses, elephants, bears, zebras, and giraffes. When a subject is found, RapidCull records the subject class (e.g., "person"), detection confidence, and the bounding box coordinates. This information appears in the Photo Info panel (`I`) and can be visualized as a bounding box overlay in the viewer (`B`).
+
+### What does the sharpness rating in the Photo Info panel mean?
+
+The sharpness value is the Laplacian variance computed on the detected subject's bounding box region. If no subject was detected, it is computed on the full image. It is shown as Low (below 100), Med (100–499), or High (500 and above). This is a measure of local texture detail — a higher value generally corresponds to sharper focus in that region. The label reads "Subject sharpness" when a bbox is present, "Image sharpness" otherwise.
+
+### Does AI analysis modify my image files?
+
+No. All scores and detection results are stored in the project's `.rapidcull` database. Your original files are never touched.
+
+### Can I re-run analysis after adding new images?
+
+Yes. Clicking Analyze again will process any images that do not yet have a composite score. Already-analyzed images are not re-processed.
+
+---
+
 ## Troubleshooting
 
 ### Some images show an error icon in the grid
@@ -187,6 +221,16 @@ Yes. Open Settings and scroll to **Keyboard Shortcuts**. Click any key badge to 
 ### What does the Focus Assist score mean?
 
 The score (0–100) represents the relative sharpness of the image. 65 or above (green) indicates a sharp image. 40–64 (yellow) is moderate. Below 40 (red) suggests soft or out-of-focus. Use it as a guide alongside your own visual judgment — the score is based on the embedded preview, not a full RAW decode.
+
+### What is the AI Score badge on thumbnails and in the viewer?
+
+The AI Score (0–100, higher is better) is a composite quality score computed during AI analysis. It combines three signals:
+
+- **Subject-region sharpness** — Laplacian variance measured on the detected subject bounding box, or the full image if no subject was detected (weight: 55%)
+- **BRISQUE quality** — a perceptual no-reference image quality measure (weight: 35%)
+- **Subject detection confidence** — a small bonus when a recognized subject (person, animal, etc.) is detected with confidence above 50% (weight: 10%)
+
+Color coding: green (70–100) = high quality, yellow (40–69) = moderate, red (0–39) = low. The badge only appears after AI analysis has been run. Images that have not been analyzed show no badge.
 
 ### How do I report a bug or request a feature?
 
