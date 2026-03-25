@@ -10,6 +10,7 @@ Burst comparison is RapidCull's signature feature. It formalizes the process pho
 - [Entering Burst Comparison](#entering-burst-comparison)
 - [The Knockout Tournament](#the-knockout-tournament)
 - [Controls](#controls)
+- [Marking Candidates During a Round](#marking-candidates-during-a-round)
 - [Layout Options](#layout-options)
 - [Zoom and Pan](#zoom-and-pan)
 - [Undo](#undo)
@@ -84,15 +85,48 @@ During comparison, a progress indicator shows your position: e.g., "Round 3 of 7
 
 ## Controls
 
-| Shortcut           | Action                                            |
-| ------------------ | ------------------------------------------------- |
-| `1` or Left Arrow  | Pick the **left/top** image (champion)            |
-| `2` or Right Arrow | Pick the **right/bottom** image (challenger)      |
-| `Z`                | Undo the last decision                            |
-| `V`                | Toggle between side-by-side and top-bottom layout |
-| `L`                | Toggle linked zoom                                |
-| `?`                | Show/hide keyboard shortcuts overlay              |
-| `Escape`           | Exit burst comparison                             |
+| Shortcut                   | Action                                            |
+| -------------------------- | ------------------------------------------------- |
+| `1` or Left Arrow          | Pick the **left/top** image (champion)            |
+| `2` or Right Arrow         | Pick the **right/bottom** image (challenger)      |
+| `Shift+1` or `Shift+Left`  | Pick left and mark right as **Candidate**         |
+| `Shift+2` or `Shift+Right` | Pick right and mark left as **Candidate**         |
+| `Z`                        | Undo the last decision                            |
+| `V`                        | Toggle between side-by-side and top-bottom layout |
+| `L`                        | Toggle linked zoom                                |
+| `?`                        | Show/hide keyboard shortcuts overlay              |
+| `Escape`                   | Exit burst comparison                             |
+
+---
+
+## Marking Candidates During a Round
+
+A burst of 8–15 images often contains a second or third strong frame. RapidCull gives you two ways to rescue runner-up images as **Candidates** without disrupting the tournament's pace.
+
+### Option A — Shift modifier (inline, during rounds)
+
+Hold **Shift** while picking to mark the losing image as Candidate instead of giving it the default loser label:
+
+- `Shift+Left Arrow` or `Shift+1` — pick the left image; the right (losing) image is marked as Candidate
+- `Shift+Right Arrow` or `Shift+2` — pick the right image; the left (losing) image is marked as Candidate
+
+When Shift is held both panes gain a subtle amber tint to confirm candidate-marking mode is active. After the pick, the losing pane flashes amber rather than the usual grey dim.
+
+This is additive — if you never use Shift, nothing changes.
+
+**First-run hint:** A dismissible banner appears at the bottom of the burst overlay the first time you open burst comparison, reminding you that Shift is available. It disappears after you dismiss it and never reappears.
+
+### Option B — Confirmation filmstrip (after all rounds)
+
+When the tournament finishes and `Auto Apply` is off, the confirmation screen shows a horizontal filmstrip of all loser images below the winner preview. Any image you Shift-marked during the rounds appears pre-selected (amber border + checkmark badge).
+
+You can also toggle any loser to Candidate here by:
+- **Clicking** a thumbnail
+- **Pressing the number key** shown on the thumbnail (`1`–`9`)
+
+Thumbnails you leave unselected receive the default loser label (Reject or Unlabeled, per your Settings). `Enter` applies all selections; `Escape` cancels and returns to the last round.
+
+> **Note:** When `Auto Apply` is enabled in Settings, the confirmation screen is skipped entirely. Option A candidate marks are still applied — the filmstrip is simply not shown.
 
 ---
 
@@ -152,7 +186,7 @@ This is useful for comparing fine details (sharpness, focus point, expressions) 
 
 ## Undo
 
-Press `Z` to undo the last decision. The previous challenger returns, and the tournament state rewinds by one step. You can undo multiple times to go back several rounds.
+Press `Z` to undo the last decision. The previous challenger returns, and the tournament state rewinds by one step — including any candidate mark that was applied during that pick. You can undo multiple times to go back several rounds.
 
 ---
 
@@ -160,14 +194,15 @@ Press `Z` to undo the last decision. The previous challenger returns, and the to
 
 When the tournament completes (all challengers have been compared):
 
-- The **winner** is automatically labeled as **Pick** (green)
-- All **losers** are automatically labeled as **Reject** (red)
-- A success notification confirms the labels were applied
+- The **winner** is labeled as **Pick** (green)
+- Images you marked as **Candidate** (via Shift or the filmstrip) are labeled as **Candidate** (amber)
+- Remaining losers receive the default loser label — **Reject** or **Unlabeled** — based on your Settings
+- A success notification confirms the labels applied, including a candidate count when applicable
 - Burst comparison mode closes automatically
 
 These labels are immediately visible in the grid and the filter counts update in real-time.
 
-> **Note:** If any of the burst images already had labels before entering comparison, those labels will be overwritten by the tournament results.
+> **Note:** By default, burst results overwrite any existing labels on the burst images. If you enable the "Only label unlabeled losers" option in Settings, only unlabeled images receive the loser label — Candidate-marked images and the winner are always written regardless.
 
 ---
 
@@ -188,6 +223,10 @@ The knockout format works best when you make quick, intuitive decisions. Don't o
 ### Work Through All Bursts in Sequence
 
 After completing a burst comparison, select the next burst in the grid and press `B` again. Working through all bursts systematically is the fastest way to cull a burst-heavy shoot.
+
+### Rescuing a Runner-Up
+
+If a frame was strong but lost to an even better one, hold Shift while picking the winner — the loser becomes a Candidate instead of being rejected. You can also use the filmstrip on the confirmation screen to promote losers after the tournament if you realize one was worth keeping.
 
 ### Combine with Manual Labeling
 

@@ -77,11 +77,15 @@ These shortcuts work in both the grid view and the viewer.
 | `B` | Enter burst comparison mode (when a burst member is selected in the grid) |
 | `1` or Left Arrow | Pick the **left** image (champion) |
 | `2` or Right Arrow | Pick the **right** image (challenger) |
-| `Z` | Undo last pick |
+| `Shift+1` or `Shift+Left` | Pick left; mark right as **Candidate** |
+| `Shift+2` or `Shift+Right` | Pick right; mark left as **Candidate** |
+| `1`–`9` _(confirmation screen)_ | Toggle the corresponding loser thumbnail as Candidate |
+| `Enter` _(confirmation screen)_ | Apply labels |
+| `Z` | Undo last pick (also reverts any candidate mark from that pick) |
 | `V` | Toggle layout (side-by-side / top-bottom) |
 | `L` | Toggle linked zoom between both panes |
 | `?` | Show/hide shortcuts help overlay |
-| `Escape` | Exit burst comparison |
+| `Escape` | Exit burst comparison / cancel confirmation |
 
 ---
 
@@ -107,14 +111,18 @@ U  Unlabeled      Enter   Open      +/-      Zoom     4  Rejects
                                     I        Photo Info
                                     B        Bbox overlay*
 
-BURST COMPARISON (grid)             ZOOM
-B       Enter burst mode            +/=      Zoom in
-1/Left  Pick left (champion)        -/_      Zoom out
-2/Right Pick right (challenger)     0        Reset fit
-Z       Undo                        Dbl-clk  Fit/100%
-V       Toggle layout               Scroll   Zoom to cursor
-L       Linked zoom                 Drag     Pan
-Esc     Exit
+BURST COMPARISON                    ZOOM
+B         Enter burst mode          +/=      Zoom in
+1/Left    Pick left (champion)      -/_      Zoom out
+2/Right   Pick right (challenger)   0        Reset fit
+S+1/Left  Pick left, mark right     Dbl-clk  Fit/100%
+S+2/Right Pick right, mark left     Scroll   Zoom to cursor
+1-9       Toggle candidate (confirm) Drag    Pan
+Enter     Apply (confirm screen)
+Z         Undo
+V         Toggle layout
+L         Linked zoom
+Esc       Exit
 
 * Viewer B: toggle subject bounding box; only active when AI detection data exists.
   Grid B: enter burst comparison for the selected image. Same key, different context.
