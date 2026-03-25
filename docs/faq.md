@@ -98,6 +98,40 @@ After burst comparison completes, you can change any label manually. Just select
 
 ---
 
+## Smart Analysis
+
+### What is Smart Analysis?
+
+Smart Analysis is an experimental feature that scores your images for technical quality. When enabled, it runs a two-phase pipeline on each image: a BRISQUE perceptual quality pass, then a subject-detection pass (people, animals) that measures focus in the subject region. The results are combined into a single **Smart Score** from 0 to 100.
+
+### How do I enable Smart Analysis?
+
+Open **Settings → Experimental** and turn on **Enable Smart Analysis**. Once enabled, an **Analyze** button appears in the project toolbar. Click it to start analysis on the current project.
+
+### What does the Smart Score mean?
+
+| Score | Badge color | General meaning |
+|-------|-------------|-----------------|
+| 70–100 | Green | High technical quality |
+| 40–69 | Amber | Moderate quality |
+| 0–39 | Red | Low quality — soft focus, heavy noise, or poor exposure |
+
+The score reflects technical quality only — sharpness, noise, and subject detection confidence. It says nothing about composition, expression, or creative intent. Use it as a signal, not a decision.
+
+### Why is the Analyze button missing even though Smart Analysis is enabled?
+
+The button requires the ONNX model file (`yolo11n.onnx`) to be present in the application's resources folder. If the model file is missing, the analysis pipeline is unavailable and the button is hidden. Contact support or consult the installation notes for your build.
+
+### Does analysis run automatically when I open a project?
+
+No. Analysis is always triggered manually by clicking **Analyze**. You can cancel it at any time and resume later — results are saved progressively as each image is scored.
+
+### Will running analysis change my labels?
+
+No. Smart Analysis only writes score data. It does not read or modify your Pick/Candidate/Reject labels in any way.
+
+---
+
 ## Export & Lightroom
 
 ### What gets exported?

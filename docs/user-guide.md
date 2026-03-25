@@ -14,6 +14,7 @@ This guide covers the core interface and workflow of RapidCull in detail: the gr
 - [Burst Detection](#burst-detection)
 - [Project Management](#project-management)
 - [Settings](#settings)
+  - [Experimental](#experimental)
   - [Integrations](#integrations)
 - [Notifications](#notifications)
 
@@ -377,6 +378,14 @@ Choose the application theme:
 ### Focus Assist
 
 The **Analysis detail** slider controls the grid resolution used by Focus Assist (1 = Low, 5 = High). Higher detail divides the image into more regions, making it easier to pinpoint small areas of soft focus. The grid is orientation-aware — portrait images get taller grids.
+
+### Experimental
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| **Enable Smart Analysis** | Off | Enables quality scoring using on-device analysis. When on, an **Analyze** button appears in the project toolbar, Smart Score badges appear on thumbnails and in the viewer, a Smart Analysis section appears in the Photo Info panel, and **Smart Score** becomes available as a sort option in the filter bar. Requires the ONNX model file to be present; the button is hidden if the model is not found. |
+
+> **Note:** Smart Analysis is an experimental feature. It may produce inaccurate scores on some image types and is not a substitute for your own visual judgment.
 
 ### Integrations
 
