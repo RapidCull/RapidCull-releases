@@ -101,6 +101,19 @@ The viewer provides a full-screen experience for examining individual images at 
 
 The viewer respects your current filter. If you're viewing only Picks, the next/previous navigation will only cycle through Pick images.
 
+### RAW vs. Preview Toggle
+
+For projects that contain RAW files, a pill button labeled **RAW** or **Preview** appears in the center of the viewer's top bar.
+
+| State | Label | Behavior |
+|-------|-------|----------|
+| **RAW** (default) | RAW | The viewer loads the embedded JPEG for fast display, then decodes the full-size RAW render and swaps it in |
+| **Preview** | Preview | The viewer stays on the embedded JPEG; no full-size decode is performed |
+
+Click the button to toggle between the two modes. The setting persists across sessions and also affects burst comparison mode. Use Preview mode when the embedded JPEG is sufficient for culling decisions and you want faster navigation, or when the RAW decoder produces colors that differ from your expected look.
+
+The toggle is not shown for JPEG-only projects.
+
 ### Info Bar
 
 The top of the viewer shows:
@@ -380,6 +393,8 @@ Choose the application theme:
 The **Analysis detail** slider controls the grid resolution used by Focus Assist (1 = Low, 5 = High). Higher detail divides the image into more regions, making it easier to pinpoint small areas of soft focus. The grid is orientation-aware — portrait images get taller grids.
 
 ### Experimental
+
+This section only appears when the ONNX runtime and bundled model are detected on your machine.
 
 | Setting | Default | Description |
 |---------|---------|-------------|

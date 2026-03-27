@@ -97,6 +97,12 @@ During comparison, a progress indicator shows your position: e.g., "Round 3 of 7
 | `?`                        | Show/hide keyboard shortcuts overlay              |
 | `Escape`                   | Exit burst comparison                             |
 
+### RAW vs. Preview Toggle
+
+When the burst group contains at least one RAW file, an image icon button appears in the top bar. Click it to toggle between **RAW** mode (decode full-size RAW after the initial embedded JPEG loads) and **Preview** mode (stay on the embedded JPEG only). The active state is indicated by an accent highlight on the button.
+
+This toggle is shared with the single-image viewer — changing it in burst comparison also affects the viewer and vice versa. The setting persists across sessions.
+
 ---
 
 ## Marking Candidates During a Round
